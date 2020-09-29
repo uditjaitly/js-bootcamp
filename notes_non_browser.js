@@ -131,6 +131,10 @@ const completed= function(todos){
         return todo.completed==false
     })
 }
+
+
+
+
 console.log(completed(todos))
 
 const details = [{name:"udit", rollno: 1},{name: "andrew", rollno:2},{name:"sam",rollno:3}]
