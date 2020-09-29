@@ -4,25 +4,28 @@ const todos = [{text: 'Order cat food',
          completed: true}, 
         {text : "Groceries", completed : false}]
 
+const filters={
+    text:""
+}
 
-let count = 0
-todos.forEach(function(todo,index){
-    if(todo.completed==false){
-        count++
-    }
-})
+const filteredTodos = function(todos,search){
+     const tds= todos.filter(function(todo){
+        return todo.text.includes(search)
+    })
+    console.log(tds)
 
-const heading = document.createElement('h2')
-heading.textContent=`You have tasks ${count} remaining`
-document.querySelector('body').appendChild(heading)
+    document.querySelector('#notes').innerHTML = ""
+    tds.forEach(function(todo){
+        if(todo.completed==false && search!=""){
+            td= document.createElement('p')
+            td.textContent=todo.text
+            document.querySelector('#notes').appendChild(td)
+        }
 
-todos.forEach(function(todo,index){
-    if(todo.completed==false){
-        const todotext=document.createElement('p')
-        todotext.textContent=todo.text
-        document.querySelector('body').appendChild(todotext)
-    }
-})
+    })
+}
+console.log(filteredTodos)
+
 
 //document.querySelector('button').addEventListener('click',function(e){
 //    e.target.textContent='Clicked it'
@@ -39,4 +42,11 @@ document.querySelector('.remove-note').addEventListener('click',function(){
     pl.forEach(function(p){
         p.remove()
     })
+})
+
+document.querySelector('#search').addEventListener('input',function(e){
+    let search=e.target.value
+    console.log(search)
+    filters.text=search
+    filteredTodos(todos,search)
 })
