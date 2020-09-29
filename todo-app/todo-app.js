@@ -24,6 +24,19 @@ todos.forEach(function(todo,index){
     }
 })
 
-document.querySelector('button').addEventListener('click',function(e){
-    e.target.textContent='Clicked it'
+//document.querySelector('button').addEventListener('click',function(e){
+//    e.target.textContent='Clicked it'
+//})
+
+document.querySelector('#add-note').addEventListener('click',function(){
+    const newnote= document.createElement('p')
+    newnote.textContent='New Note'
+    document.querySelector('body').appendChild(newnote)
+})
+
+document.querySelector('.remove-note').addEventListener('click',function(){
+    const pl= document.querySelectorAll('p')
+    pl.forEach(function(p){
+        p.remove()
+    })
 })
