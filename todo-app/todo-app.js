@@ -12,7 +12,7 @@ todos.forEach(function(todo,index){
     }
 })
 
-const heading = document.createElement('h')
+const heading = document.createElement('h2')
 heading.textContent=`You have tasks ${count} remaining`
 document.querySelector('body').appendChild(heading)
 
@@ -22,4 +22,8 @@ todos.forEach(function(todo,index){
         todotext.textContent=todo.text
         document.querySelector('body').appendChild(todotext)
     }
+})
+
+document.querySelector('button').addEventListener('click',function(e){
+    e.target.textContent='Clicked it'
 })
