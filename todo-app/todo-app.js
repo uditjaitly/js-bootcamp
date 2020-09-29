@@ -24,25 +24,14 @@ const filteredTodos = function(todos,search){
 
     })
 }
-console.log(filteredTodos)
 
-
-//document.querySelector('button').addEventListener('click',function(e){
-//    e.target.textContent='Clicked it'
-//})
-
-document.querySelector('#add-note').addEventListener('click',function(){
-    const newnote= document.createElement('p')
-    newnote.textContent='New Note'
-    document.querySelector('body').appendChild(newnote)
+document.querySelector('#todo-form').addEventListener('submit',function(e){
+    e.preventDefault()
+    const newtodo= e.target.elements.addNote.value
+    todos.push({text:newtodo, completed:false})
 })
 
-document.querySelector('.remove-note').addEventListener('click',function(){
-    const pl= document.querySelectorAll('p')
-    pl.forEach(function(p){
-        p.remove()
-    })
-})
+
 
 document.querySelector('#search').addEventListener('input',function(e){
     let search=e.target.value
